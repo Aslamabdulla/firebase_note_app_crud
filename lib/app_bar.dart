@@ -15,7 +15,7 @@ class AppBarW extends StatelessWidget {
       children: [
         Image.asset(
           "assets/firebaselogo.png",
-          height: 20,
+          height: 30,
         ),
         SizedBox(
           width: 8,

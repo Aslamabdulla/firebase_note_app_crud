@@ -19,7 +19,7 @@ class AddScreen extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.black,
-          title: AppBarW(sectionName: "CRUD"),
+          title: AppBarW(sectionName: "CREATE"),
         ),
         body: SafeArea(
             child: Padding(

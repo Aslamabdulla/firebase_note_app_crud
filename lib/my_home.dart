@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crud/home_presenter.dart';
 import 'package:firebase_crud/login.dart';
 import 'package:flutter/material.dart';
 
@@ -21,43 +22,54 @@ class _MyHomeState extends State<MyHome> {
     return GestureDetector(
       onTap: () => _uidFocusNode.unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: bgColor,
         body: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
+                      flex: 1,
                       child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(child: Image.asset("assets/firebaselogo.png")),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "FLUTTER FIRE",
-                        style: TextStyle(
-                            backgroundColor: Colors.blueAccent, fontSize: 40),
-                      )
-                    ],
-                  )),
-                  FutureBuilder(
-                    future: intializeFirebase(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        return Text("ERROR INTIALIZING");
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.done) {
-                        return LoginFormScreen(focusNode: _uidFocusNode);
-                      }
-                      return CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.orangeAccent),
-                      );
-                    },
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                              child: Image.asset(
+                            "assets/firebaselogo.png",
+                            height: 150,
+                          )),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            "FLUTTER FIRE",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      )),
+                  Expanded(
+                    flex: 1,
+                    child: FutureBuilder(
+                      future: intializeFirebase(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return const Text("ERROR INTIALIZING");
+                        } else if (snapshot.connectionState ==
+                            ConnectionState.done) {
+                          return LoginFormScreen(focusNode: _uidFocusNode);
+                        }
+                        return const CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.orangeAccent),
+                        );
+                      },
+                    ),
                   )
                 ],
               ),

@@ -36,7 +36,7 @@ class _EditScreenState extends State<EditScreen> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.black,
-          title: AppBarW(sectionName: "CRUD"),
+          title: AppBarW(sectionName: "EDIT"),
           actions: [
             isDeleting
                 ? Padding(

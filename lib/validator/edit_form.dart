@@ -11,10 +11,10 @@ import 'package:flutter/src/widgets/framework.dart';
 class EditItemScrenForm extends StatefulWidget {
   final FocusNode titleFocusNode;
   final FocusNode descriptionFocusNode;
-  final String currentTitle;
-  final String currentDescription;
+  String currentTitle;
+  String currentDescription;
   final String currentDocId;
-  const EditItemScrenForm({
+  EditItemScrenForm({
     Key? key,
     required this.titleFocusNode,
     required this.descriptionFocusNode,
@@ -67,7 +67,11 @@ class _EditItemScrenFormState extends State<EditItemScrenForm> {
                         hint: "Enter the title",
                         validator: (value) {
                           Validator.validateField(value: value);
-                          updateTitle = value;
+                          setState(() {
+                            widget.currentTitle = value;
+                            updateTitle = widget.currentTitle;
+                            updateTitle = _titleController.text;
+                          });
                         }),
                     SizedBox(
                       height: 20,
@@ -84,7 +88,12 @@ class _EditItemScrenFormState extends State<EditItemScrenForm> {
                         hint: "Write Description",
                         validator: (value) {
                           Validator.validateField(value: value);
-                          updateDescription = value;
+                          setState(() {
+                            widget.currentDescription = value;
+
+                            updateDescription = widget.currentDescription;
+                            updateDescription = _descriptionController.text;
+                          });
                         }),
                     isProcessing
                         ? const Padding(
@@ -97,6 +106,7 @@ class _EditItemScrenFormState extends State<EditItemScrenForm> {
                             width: double.infinity,
                             child: ElevatedButton(
                                 onPressed: () async {
+                                  print(widget.currentDocId);
                                   widget.titleFocusNode.unfocus();
                                   widget.descriptionFocusNode.unfocus();
                                   if (_addItemFormKey.currentState!

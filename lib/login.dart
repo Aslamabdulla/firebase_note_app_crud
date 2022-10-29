@@ -36,8 +36,8 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                       focusNode: widget.focusNode,
                       keyboardType: TextInputType.text,
                       inputAction: TextInputAction.done,
-                      label: "UNIQUE USER Id",
-                      hint: "USERNAME",
+                      label: "UNIQUE USER ID",
+                      hint: "ENTER USERNAME",
                       validator: (value) {
                         Validator.validateField(value: value);
                         getId = value;
@@ -46,7 +46,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 30, right: 30),
               child: Container(
                 width: double.infinity,
                 child: ElevatedButton(

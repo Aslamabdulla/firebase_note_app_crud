@@ -20,7 +20,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
-        title: AppBarW(sectionName: "CRUD"),
+        title: AppBarW(sectionName: "NOTE APP"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
